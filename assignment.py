@@ -49,6 +49,9 @@ plt.suptitle('Sampling Distribution of Estimators for N(0,1)')
 plt.show()
 
 def mixture_of_normals(var1, var2, n, iter=5000):
+    capital_Ss = []
+    means = []
+    trimmed_Ss = []
     for i in range(iter):
         first = 0.9*(np.random.normal(0, var1, n))
         second = 0.1*(np.random.normal(0, var2, n))
