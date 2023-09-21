@@ -88,6 +88,17 @@ def normal_plus_cauchy(var1, var2, iter=5000):
         trimmed_Ss.append(trimmed_S)
     return capital_Ss, means, trimmed_Ss
 
+capital_Ss, means, trimmed_Ss = normal_plus_cauchy(1, 1, n)
+fig, ax = plt.subplots(1,3,figsize=(15,5))
+ax[0].hist(capital_Ss, bins=50, density=True)
+ax[0].set_title('Sampling Distribution of Capital S')
+ax[1].hist(means, bins=50, density=True)
+ax[1].set_title('Sampling Distribution of Mean')
+ax[2].hist(trimmed_Ss, bins=50, density=True)
+ax[2].set_title('Sampling Distribution of Trimmed S')
+plt.suptitle('Sampling Distribution of Estimators for 0.95N(0,1) + 0.05Cauchy(0,1)')
+plt.show()
+
 
 
 
