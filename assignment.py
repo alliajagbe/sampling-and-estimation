@@ -22,11 +22,11 @@ def myEstimators(n,x):
 
 # obtaining the sampling distribution of the estimators
 n = 20
-capital_Ss = []
-means = []
-trimmed_Ss = []
 
 def normal(n, iter=5000):
+    capital_Ss = []
+    means = []
+    trimmed_Ss = []
     for i in range(iter):
         x = np.random.normal(0,1,n)
         capital_S, mean, trimmed_S = myEstimators(n,x)
