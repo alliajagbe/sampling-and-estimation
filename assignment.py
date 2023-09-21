@@ -71,6 +71,18 @@ plt.suptitle('Sampling Distribution of Estimators for 0.9N(0,1) + 0.1N(0,3)')
 plt.show()
 
 
+def normal_plus_cauchy(var1, var2, iter=5000):
+    for i in range(iter):
+        first = 0.95*(np.random.norma(0, var1, n))
+        second = 0.05*(np.random.standard_cauchy(n))
+        x = first + second
+        capital_S, mean, trimmed_S = myEstimators(n,x)
+        capital_Ss.append(capital_S)
+        means.append(mean)
+        trimmed_Ss.append(trimmed_S)
+    return capital_Ss, means, trimmed_Ss
+
+
 
 
 
