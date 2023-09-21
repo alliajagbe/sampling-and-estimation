@@ -5,6 +5,9 @@ import scipy.stats as stats
 #%%
 '''
 Question 1 - Part 1
+Obtain the sampling distribution of the three estimators for all three models for
+n = 20. Compute the mean and variance of the estimators based on the sampling 
+distribution. Use at least 5000 replications. 
 '''
 
 def myEstimators(n,x):
