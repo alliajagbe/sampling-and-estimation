@@ -79,7 +79,7 @@ def normal_plus_cauchy(var1, var2, iter=5000):
     means = []
     trimmed_Ss = []
     for i in range(iter):
-        first = 0.95*(np.random.norma(0, var1, n))
+        first = 0.95*(np.random.normal(0, var1, n))
         second = 0.05*(np.random.standard_cauchy(n))
         x = first + second
         capital_S, mean, trimmed_S = myEstimators(n,x)
