@@ -50,8 +50,9 @@ plt.show()
 
 def mixture_of_normals(var1, var2, n, iter=5000):
     for i in range(iter):
-        population_model = 0.9 * stats.norm(0, var1) + 0.1 * stats.norm(0, var2)
-        x = population_model.rvs(n)
+        first = np.random.normal(0, var1, n)
+        second = np.random.normal(0, var2, n)
+        x = (0.1 * first) + (0.9 * second)
         capital_S, mean, trimmed_S = myEstimators(n,x)
         capital_Ss.append(capital_S)
         means.append(mean)
