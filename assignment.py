@@ -26,8 +26,8 @@ capital_Ss = []
 means = []
 trimmed_Ss = []
 
-def normal(n):
-    for i in range(5000):
+def normal(n, iter=5000):
+    for i in range(iter):
         x = np.random.normal(0,1,n)
         capital_S, mean, trimmed_S = myEstimators(n,x)
         capital_Ss.append(capital_S)
@@ -46,6 +46,27 @@ ax[1].set_title('Sampling Distribution of Mean')
 ax[2].hist(trimmed_Ss, bins=50, density=True)
 ax[2].set_title('Sampling Distribution of Trimmed S')
 plt.suptitle('Sampling Distribution of Estimators for N(0,1)')
+plt.show()
+
+def mixture_of_normals(var1, var2, n, iter=5000):
+    for i in range(iter):
+        population_model = 0.9 * stats.norm(0, var1) + 0.1 * stats.norm(0, var2)
+        x = population_model.rvs(n)
+        capital_S, mean, trimmed_S = myEstimators(n,x)
+        capital_Ss.append(capital_S)
+        means.append(mean)
+        trimmed_Ss.append(trimmed_S)
+    return capital_Ss, means, trimmed_Ss
+
+capital_Ss, means, trimmed_Ss = mixture_of_normals(1, 3, n)
+fig, ax = plt.subplots(1,3,figsize=(15,5))
+ax[0].hist(capital_Ss, bins=50, density=True)
+ax[0].set_title('Sampling Distribution of Capital S')
+ax[1].hist(means, bins=50, density=True)
+ax[1].set_title('Sampling Distribution of Mean')
+ax[2].hist(trimmed_Ss, bins=50, density=True)
+ax[2].set_title('Sampling Distribution of Trimmed S')
+plt.suptitle('Sampling Distribution of Estimators for 0.9N(0,1) + 0.1N(0,3)')
 plt.show()
 
 
