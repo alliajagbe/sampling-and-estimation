@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 #%%
 '''
-Question 1
+Question 1 - Part 1
 '''
 
 def myEstimators(n,x):
