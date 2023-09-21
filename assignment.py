@@ -72,6 +72,9 @@ plt.show()
 
 
 def normal_plus_cauchy(var1, var2, iter=5000):
+    capital_Ss = []
+    means = []
+    trimmed_Ss = []
     for i in range(iter):
         first = 0.95*(np.random.norma(0, var1, n))
         second = 0.05*(np.random.standard_cauchy(n))
