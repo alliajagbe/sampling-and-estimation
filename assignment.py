@@ -25,12 +25,17 @@ n = 20
 capital_Ss = []
 means = []
 trimmed_Ss = []
-for i in range(5000):
-    x = np.random.normal(0,1,n)
-    capital_S, mean, trimmed_S = myEstimators(n,x)
-    capital_Ss.append(capital_S)
-    means.append(mean)
-    trimmed_Ss.append(trimmed_S)
+
+def normal(n):
+    for i in range(5000):
+        x = np.random.normal(0,1,n)
+        capital_S, mean, trimmed_S = myEstimators(n,x)
+        capital_Ss.append(capital_S)
+        means.append(mean)
+        trimmed_Ss.append(trimmed_S)
+    return capital_Ss, means, trimmed_Ss
+
+capital_Ss, means, trimmed_Ss = normal(n)
 
 # plotting the sampling distribution of the estimators
 fig, ax = plt.subplots(1,3,figsize=(15,5))
@@ -42,6 +47,9 @@ ax[2].hist(trimmed_Ss, bins=50, density=True)
 ax[2].set_title('Sampling Distribution of Trimmed S')
 plt.suptitle('Sampling Distribution of Estimators for N(0,1)')
 plt.show()
+
+
+
 
 
 
