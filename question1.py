@@ -6,6 +6,10 @@ n = 20. Compute the mean and variance of the estimators based on the sampling
 distribution. Use at least 5000 replications. 
 '''
 
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 def myEstimators(n,x):
     divisor = 1/(n - 1)
     capital_S = np.sqrt(divisor * np.sum((x - np.mean(x))**2))
@@ -52,9 +56,13 @@ def mixture_of_normals(var1, var2, n, iter=5000):
     means = []
     trimmed_Ss = []
     for i in range(iter):
-        first = 0.9*(np.random.normal(0, var1, n))
-        second = 0.1*(np.random.normal(0, var2, n))
-        x = first + second
+
+        epsilon = 0.1
+        if np.random.uniform() < epsilon:
+            x = np.random.normal(0, var2, n)
+        else:
+            x = np.random.normal(0, var1, n)
+
         capital_S, mean, trimmed_S = myEstimators(n,x)
         capital_Ss.append(capital_S)
         means.append(mean)
@@ -97,3 +105,4 @@ ax[2].hist(trimmed_Ss, bins=50, density=True)
 ax[2].set_title('Sampling Distribution of Trimmed S')
 plt.suptitle('Sampling Distribution of Estimators for 0.95N(0,1) + 0.05Cauchy(0,1)')
 plt.show()
+# %%
