@@ -253,9 +253,11 @@ print("Bias of Beta MLE:", np.mean(betas) - scale[0])
 print("Bias of Alpha MOM:", np.mean(shapes) - shape[0])
 print("Bias of Beta MOM:", np.mean(scales) - scale[0])
 
-print("MSE of Alpha MLE:", np.mean((np.array(alphas) - shape[0])**2))
-print("MSE of Beta MLE:", np.mean((np.array(betas) - scale[0])**2))
-print("MSE of Alpha MOM:", np.mean((np.array(shapes) - shape[0])**2))
-print("MSE of Beta MOM:", np.mean((np.array(scales) - scale[0])**2))
+
+# using var plus bias squared to calculate mse
+print("MSE of Alpha MLE:", np.var(alphas) + (np.mean(alphas) - shape[0])**2)
+print("MSE of Beta MLE:", np.var(betas) + (np.mean(betas) - scale[0])**2)
+print("MSE of Alpha MOM:", np.var(shapes) + (np.mean(shapes) - shape[0])**2)
+print("MSE of Beta MOM:", np.var(scales) + (np.mean(scales) - scale[0])**2)
 
 # %%
