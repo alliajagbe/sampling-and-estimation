@@ -177,9 +177,26 @@ plt.title('Histogram of Sample')
 plt.xlabel('Rainfall')
 plt.show()
 
-# finding the mle of the sample using the log_likelihood function
+# finding the mle of the sample using the log_likelihood function with 1000 iterations
+alphas = []
+betas = []
 initial_guess = [1,1]
-res = minimize(log_likelihood, initial_guess, args=(sample,), method='BFGS')
-alpha_sample, beta_sample = res.x
-print("Shape:",alpha_sample)
-print("Scale:",beta_sample)
+for i in range(1000):
+    res = minimize(log_likelihood, initial_guess, args=(sample,), method='BFGS')
+    alpha, beta = res.x
+    alphas.append(alpha)
+    betas.append(beta)
+
+# plotting the histogram of the mle of the sample
+sns.histplot(alphas, bins=50)
+plt.title('Histogram of Alpha')
+plt.xlabel('Alpha')
+plt.show()
+
+sns.histplot(betas, bins=50)
+plt.title('Histogram of Beta')
+plt.xlabel('Beta')
+plt.show()
+
+
+# %%
