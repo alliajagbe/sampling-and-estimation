@@ -236,3 +236,5 @@ print("MSE of Alpha MLE:", np.mean((np.array(alphas) - shape[0])**2))
 print("MSE of Beta MLE:", np.mean((np.array(betas) - scale[0])**2))
 print("MSE of Alpha MOM:", np.mean((np.array(shapes) - shape[0])**2))
 print("MSE of Beta MOM:", np.mean((np.array(scales) - scale[0])**2))
+
+# %%
