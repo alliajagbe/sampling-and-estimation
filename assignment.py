@@ -121,20 +121,22 @@ rainfall_data = pd.read_excel('Rainfall DataSet - Assignment 2.xlsx', header=Non
 print(len(rainfall_data))
 print(rainfall_data.head())
 
+rainfall_data_flattened = np.array(rainfall_data).flatten()
+
 # plotting the histogram of the rainfall data
-sns.histplot(rainfall_data, bins=50)
+sns.histplot(rainfall_data_flattened, bins=50)
 plt.title('Histogram of Rainfall Data')
 plt.xlabel('Rainfall')
 plt.show()
 
 # fitting a gamma distribution to the rainfall data
-shape, loc, scale = stats.gamma.fit(rainfall_data)
+shape, loc, scale = stats.gamma.fit(rainfall_data_flattened)
 print(shape, loc, scale)
 
 # plotting the fitted gamma distribution
 x = np.linspace(0, 3, 1000)
 y = stats.gamma.pdf(x, shape, loc, scale)
-sns.histplot(rainfall_data, bins=50, stat='density')
+sns.histplot(rainfall_data_flattened, bins=50, stat='density')
 plt.plot(x, y, label='Fitted Gamma Distribution')
 plt.title('Histogram of Rainfall Data')
 plt.xlabel('Rainfall')
@@ -142,15 +144,15 @@ plt.legend()
 plt.show()
 
 # estimating the parameters using the method of moments
-mean = np.mean(rainfall_data)
-var = np.var(rainfall_data)
+mean = np.mean(rainfall_data_flattened)
+var = np.var(rainfall_data_flattened)
 shape = mean**2/var
 scale = var/mean
 print("Shape:",shape[0])
 print("Scale:",scale[0])
 
 # estimating the parameters using the method of maximum likelihood using scipy
-alpha, loc, beta = stats.gamma.fit(rainfall_data, floc=0)
+alpha, loc, beta = stats.gamma.fit(rainfall_data_flattened, floc=0)
 print("Alpha:",alpha)
 print("Beta:",beta)
 
