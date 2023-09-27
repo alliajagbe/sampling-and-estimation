@@ -123,6 +123,28 @@ plt.title('Histogram of Rainfall Data')
 plt.xlabel('Rainfall')
 plt.show()
 
+# fitting a gamma distribution to the rainfall data
+shape, loc, scale = stats.gamma.fit(rainfall_data)
+print(shape, loc, scale)
+
+# plotting the fitted gamma distribution
+x = np.linspace(0, 3, 1000)
+y = stats.gamma.pdf(x, shape, loc, scale)
+sns.histplot(rainfall_data, bins=50, stat='density')
+plt.plot(x, y, label='Fitted Gamma Distribution')
+plt.title('Histogram of Rainfall Data')
+plt.xlabel('Rainfall')
+plt.legend()
+plt.show()
+
+# estimating the parameters using the method of moments
+mean = np.mean(rainfall_data)
+var = np.var(rainfall_data)
+shape = mean**2/var
+scale = var/mean
+print("Shape:",shape)
+print("Scale:",scale)
+
 
 
 # %%
