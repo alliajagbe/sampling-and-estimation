@@ -110,3 +110,40 @@ ax[2].set_title('Sampling Distribution of Trimmed S')
 plt.suptitle('Sampling Distribution of Estimators for 0.95N(0,1) + 0.05Cauchy(0,1)')
 plt.show()
 # %%
+
+# computing the bias and mse of the estimators
+def bias(estimator, true_value):
+    return np.mean(estimator) - true_value
+
+def mse(estimator, true_value):
+    return np.var(estimator) + (np.mean(estimator) - true_value)**2
+
+# for normal
+capital_Ss, means, trimmed_Ss = normal(n)
+print("Bias of Capital S:", bias(capital_Ss, 1))
+print("Bias of Mean:", bias(means, 1))
+print("Bias of Trimmed S:", bias(trimmed_Ss, 1))
+print("MSE of Capital S:", mse(capital_Ss, 1))
+print("MSE of Mean:", mse(means, 1))
+print("MSE of Trimmed S:", mse(trimmed_Ss, 1))
+print()
+# for mixture of normals
+capital_Ss, means, trimmed_Ss = mixture_of_normals(1, 3, n)
+print("Bias of Capital S:", bias(capital_Ss, 1))
+print("Bias of Mean:", bias(means, 1))
+print("Bias of Trimmed S:", bias(trimmed_Ss, 1))
+print("MSE of Capital S:", mse(capital_Ss, 1))
+print("MSE of Mean:", mse(means, 1))
+print("MSE of Trimmed S:", mse(trimmed_Ss, 1))
+print()
+# for normal plus cauchy
+capital_Ss, means, trimmed_Ss = normal_plus_cauchy(1, 1, n)
+print("Bias of Capital S:", bias(capital_Ss, 1))
+print("Bias of Mean:", bias(means, 1))
+print("Bias of Trimmed S:", bias(trimmed_Ss, 1))
+print("MSE of Capital S:", mse(capital_Ss, 1))
+print("MSE of Mean:", mse(means, 1))
+print("MSE of Trimmed S:", mse(trimmed_Ss, 1))
+print()
+
+# %%
