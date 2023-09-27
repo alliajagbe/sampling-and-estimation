@@ -71,6 +71,7 @@ def mixture_of_normals(var1, var2, n, iter=5000):
     trimmed_Ss = []
     for i in range(iter):
 
+        # selecting N(0,1) with probability 0.9 and N(0,3) with probability 0.1
         epsilon = 0.1
         if np.random.uniform() < epsilon:
             x = np.random.normal(0, var2, n)
