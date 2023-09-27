@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 import pandas as pd
+import seaborn as sns
 #%%
 '''
 Question 1 - Part 1
@@ -112,8 +113,16 @@ plt.show()
 '''
 # Question 2
 '''
-rainfall_data = pd.read_excel('Rainfall DataSet - Assignment 2.xlsx')
-rainfall_data.head()
+rainfall_data = pd.read_excel('Rainfall DataSet - Assignment 2.xlsx', header=None)
+print(len(rainfall_data))
+print(rainfall_data.head())
+
+# plotting the histogram of the rainfall data
+sns.histplot(rainfall_data, bins=50)
+plt.title('Histogram of Rainfall Data')
+plt.xlabel('Rainfall')
+plt.show()
+
 
 
 # %%
