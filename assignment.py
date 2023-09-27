@@ -165,3 +165,21 @@ print("Scale:",beta)
 
 
 # %%
+'''
+# Assignment 2 - Part 2
+'''
+# drawing a sample of size 226 from the fitted gamma distribution
+sample = stats.gamma.rvs(alpha, loc, beta, size=226)
+
+# plotting the histogram of the sample
+sns.histplot(sample, bins=50)
+plt.title('Histogram of Sample')
+plt.xlabel('Rainfall')
+plt.show()
+
+# finding the mle of the sample using the log_likelihood function
+initial_guess = [1,1]
+res = minimize(log_likelihood, initial_guess, args=(sample,), method='BFGS')
+alpha_sample, beta_sample = res.x
+print("Shape:",alpha_sample)
+print("Scale:",beta_sample)
