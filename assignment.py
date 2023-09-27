@@ -145,16 +145,16 @@ plt.show()
 
 # %%
 # comparing the mle and mom estimators using the bias and mse
-print("Bias of Alpha MLE:", np.mean(alphas) - shape)
-print("Bias of Beta MLE:", np.mean(betas) - scale)
-print("Bias of Alpha MOM:", np.mean(shapes) - alpha)
-print("Bias of Beta MOM:", np.mean(scales) - beta)
+print("Bias of Alpha MLE:", np.mean(alphas) - alpha)
+print("Bias of Beta MLE:", np.mean(betas) - beta)
+print("Bias of Alpha MOM:", np.mean(shapes) - shape)
+print("Bias of Beta MOM:", np.mean(scales) - scale)
 
 
 # using var plus bias squared to calculate mse
-print("MSE of Alpha MLE:", np.var(alphas) + (np.mean(alphas) - shape)**2)
-print("MSE of Beta MLE:", np.var(betas) + (np.mean(betas) - scale)**2)
-print("MSE of Alpha MOM:", np.var(shapes) + (np.mean(shapes) - alpha)**2)
-print("MSE of Beta MOM:", np.var(scales) + (np.mean(scales) - beta)**2)
+print("MSE of Alpha MLE:", np.var(alphas) + (np.mean(alphas) - alpha)**2)
+print("MSE of Beta MLE:", np.var(betas) + (np.mean(betas) - beta)**2)
+print("MSE of Alpha MOM:", np.var(shapes) + (np.mean(shapes) - shape)**2)
+print("MSE of Beta MOM:", np.var(scales) + (np.mean(scales) - scale)**2)
 
 # %%
