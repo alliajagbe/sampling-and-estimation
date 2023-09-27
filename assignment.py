@@ -157,34 +157,6 @@ print("Beta:",beta)
 
 
 
-#%%
-# Finding the expected frequencies
-expected = stats.gamma.pdf(rainfall_data, shape[0], scale=1/scale[0])
-expected = expected / np.sum(expected)
-
-# Finding the observed frequencies
-observed = rainfall_data / np.sum(rainfall_data)
-
-# Finding the chi-square statistic
-chi_square_stat, p_value = stats.chisquare(observed, expected)
-
-# Finding the p-value
-print("Chi-Square Statistic:", chi_square_stat)
-print("P-Value:", p_value)
-
-# Using hypothesis testing to test if the rainfall data follows a gamma distribution
-# Null hypothesis: Rainfall data follows a gamma distribution
-# Alternative hypothesis: Rainfall data does not follow a gamma distribution
-# Using a significance level of 0.05
-significance_level = 0.05
-if p_value < significance_level:
-    print("Reject the null hypothesis. The rainfall data does not follow a gamma distribution.")
-else:
-    print("Do not reject the null hypothesis. The rainfall data follows a gamma distribution.")
-
-
-
-
 
 # %%
 '''
