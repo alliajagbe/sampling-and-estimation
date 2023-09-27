@@ -152,6 +152,7 @@ print("Scale:",scale[0])
 # estimating the parameters using the method of maximum likelihood
 def log_likelihood(alpha, beta, data):
     output = np.sum(np.log(beta**alpha * data**(alpha-1) * np.exp(-data*beta) / gamma(alpha)))
+    return output
 
 
 
