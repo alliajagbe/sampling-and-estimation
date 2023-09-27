@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 import pandas as pd
 import seaborn as sns
+from scipy.special import gamma
+from scipy.optimize import minimize
 #%%
 '''
 Question 1 - Part 1
@@ -146,6 +148,10 @@ shape = mean**2/var
 scale = var/mean
 print("Shape:",shape[0])
 print("Scale:",scale[0])
+
+# estimating the parameters using the method of maximum likelihood
+def log_likelihood(alpha, beta, data):
+    output = -np.sum(np.log(beta**alpha * data**(alpha-1) * np.exp(-data*beta) / gamma(alpha)))
 
 
 
