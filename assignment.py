@@ -5,7 +5,7 @@ import scipy.stats as stats
 import pandas as pd
 import seaborn as sns
 from scipy.special import gamma
-from scipy.optimize import maximize
+from scipy.optimize import minimize
 #%%
 '''
 Question 1 - Part 1
@@ -151,8 +151,11 @@ print("Scale:",scale[0])
 
 # estimating the parameters using the method of maximum likelihood
 def log_likelihood(alpha, beta, data):
-    output = np.sum(np.log(beta**alpha * data**(alpha-1) * np.exp(-data*beta) / gamma(alpha)))
+    output = -np.sum(np.log(beta**alpha * data**(alpha-1) * np.exp(-data*beta) / gamma(alpha)))
     return output
+
+initial_guess = [1,1] 
+
 
 
 
