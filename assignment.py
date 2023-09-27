@@ -154,6 +154,32 @@ alpha, loc, beta = stats.gamma.fit(rainfall_data, floc=0)
 print("Alpha:",alpha)
 print("Beta:",beta)
 
+# assessing the goodness of fit using the chi-square test
+# finding the expected frequencies
+expected = stats.gamma.pdf(x, alpha, loc, beta)
+expected = expected * len(rainfall_data)
+
+# finding the observed frequencies
+observed, bins = np.histogram(rainfall_data, bins=50)
+observed = observed
+
+# finding the chi-square statistic
+chi_square = np.sum((observed - expected)**2/expected)
+print("Chi-Square Statistic:", chi_square)
+
+# finding the p-value
+p_value = 1 - stats.chi2.cdf(chi_square, 50)
+print("P-Value:", p_value)
+
+# using hypothesis testing to test if the rainfall data follows a gamma distribution
+# null hypothesis: rainfall data follows a gamma distribution
+# alternative hypothesis: rainfall data does not follow a gamma distribution
+# using a significance level of 0.05
+if p_value < 0.05:
+    print("Reject Null Hypothesis. The rainfall data does not follow a gamma distribution")
+else:
+    print("Fail to Reject Null Hypothesis. The rainfall data follows a gamma distribution")
+
 
 
 
