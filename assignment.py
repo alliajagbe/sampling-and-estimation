@@ -155,6 +155,10 @@ def log_likelihood(alpha, beta, data):
     return output
 
 initial_guess = [1,1] 
+res = minimize(log_likelihood, initial_guess, args=(rainfall_data), method='BFGS')
+alpha, beta = res.x
+print("Shape:",alpha)
+print("Scale:",beta)
 
 
 
