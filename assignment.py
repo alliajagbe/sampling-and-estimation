@@ -193,3 +193,11 @@ plt.show()
 
 
 # %%
+'''
+# Assignment 2 - Part 3
+'''
+sample2 = stats.gamma.rvs(shape[0], loc, scale[0], size=226)
+sns.histplot(sample2, bins=50)
+plt.title('Histogram of Sample')
+plt.xlabel('Rainfall')
+plt.show()
