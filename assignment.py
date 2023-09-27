@@ -149,17 +149,10 @@ scale = var/mean
 print("Shape:",shape[0])
 print("Scale:",scale[0])
 
-# estimating the parameters using the method of maximum likelihood
-def log_likelihood(parameters, data):
-    alpha, beta = parameters
-    output = -np.sum(np.log(beta**alpha * data**(alpha-1) * np.exp(-data*beta) / gamma(alpha)))
-    return output
-
-initial_guess = [1,1] 
-res = minimize(log_likelihood, initial_guess, args=(rainfall_data,), method='BFGS')
-alpha, beta = res.x
-print("Shape:",alpha)
-print("Scale:",beta)
+# estimating the parameters using the method of maximum likelihood using scipy
+alpha, loc, beta = stats.gamma.fit(rainfall_data, floc=0)
+print("Alpha:",alpha)
+print("Beta:",beta)
 
 
 
@@ -177,23 +170,23 @@ plt.title('Histogram of Sample')
 plt.xlabel('Rainfall')
 plt.show()
 
-# finding the mle of the sample using the log_likelihood function with 1000 iterations
+# finding the mle of the sample using scipy
 alphas = []
 betas = []
-initial_guess = [1,1]
 for i in range(1000):
-    res = minimize(log_likelihood, initial_guess, args=(sample,), method='BFGS')
-    alpha, beta = res.x
-    alphas.append(alpha)
-    betas.append(beta)
+    sample = stats.gamma.rvs(alpha, loc, beta, size=226)
+    alpha_sample, loc_sample, beta_sample = stats.gamma.fit(sample, floc=0)
+    alphas.append(alpha_sample)
+    betas.append(beta_sample)
+
 
 # plotting the histogram of the mle of the sample
-sns.histplot(alphas, bins=50)
+sns.histplot(alphas, bins=50, color='red')
 plt.title('Histogram of Alpha')
 plt.xlabel('Alpha')
 plt.show()
 
-sns.histplot(betas, bins=50)
+sns.histplot(betas, bins=50, color='green')
 plt.title('Histogram of Beta')
 plt.xlabel('Beta')
 plt.show()
