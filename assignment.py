@@ -107,7 +107,9 @@ plt.show()
 
 
 
-
+#%%
+import warnings
+warnings.filterwarnings('ignore')
 
 # %%
 '''
@@ -142,8 +144,8 @@ mean = np.mean(rainfall_data)
 var = np.var(rainfall_data)
 shape = mean**2/var
 scale = var/mean
-print("Shape:",shape)
-print("Scale:",scale)
+print("Shape:",shape[0])
+print("Scale:",scale[0])
 
 
 
