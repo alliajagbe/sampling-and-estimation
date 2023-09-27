@@ -154,6 +154,20 @@ alpha, loc, beta = stats.gamma.fit(rainfall_data, floc=0)
 print("Alpha:",alpha)
 print("Beta:",beta)
 
+#%%
+shape_value, scale_value = shape[0], scale[0]
+
+theretical_quantiles = stats.gamma.ppf(np.linspace(0.01, 0.99, 99), shape_value, loc=0, scale=scale_value)
+
+observed_quantiles = np.sort(rainfall_data)
+
+# plotting the qq plot
+plt.scatter(theretical_quantiles, observed_quantiles)
+plt.title('QQ Plot')
+plt.xlabel('Theoretical Quantiles')
+plt.ylabel('Observed Quantiles')
+plt.show()
+
 
 
 
