@@ -95,7 +95,7 @@ plt.suptitle('Sampling Distribution of Estimators for 0.9N(0,1) + 0.1N(0,3)')
 plt.show()
 
 
-def normal_plus_cauchy(var1, var2, iter=5000):
+def normal_plus_cauchy(var1, iter=5000):
     capital_Ss = []
     means = []
     trimmed_Ss = []
@@ -111,9 +111,10 @@ def normal_plus_cauchy(var1, var2, iter=5000):
         capital_Ss.append(capital_S)
         means.append(mean)
         trimmed_Ss.append(trimmed_S)
+
     return capital_Ss, means, trimmed_Ss
 
-capital_Ss, means, trimmed_Ss = normal_plus_cauchy(1, 1, n)
+capital_Ss, means, trimmed_Ss = normal_plus_cauchy(1, n)
 fig, ax = plt.subplots(1,3,figsize=(15,5))
 ax[0].hist(capital_Ss, bins=50, density=True)
 ax[0].set_title('Sampling Distribution of Capital S')
