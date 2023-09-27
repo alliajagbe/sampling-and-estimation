@@ -156,19 +156,18 @@ print("Beta:",beta)
 
 #%%
 shape_value, scale_value = shape[0], scale[0]
+print(shape_value, scale_value)
 
-theretical_quantiles = stats.gamma.ppf(np.linspace(0.01, 0.99, len(rainfall_data)), shape_value, loc=0, scale=scale_value)
+# turning rainfall data to numpy array
+rainfall_data = np.array(rainfall_data)
 
-observed_quantiles = np.sort(rainfall_data)
+rainfall_data_flattened = rainfall_data.flatten()
 
-# plotting the qq plot
-plt.scatter(theretical_quantiles, observed_quantiles)
-plt.title('QQ Plot')
-plt.xlabel('Theoretical Quantiles')
-plt.ylabel('Observed Quantiles')
+# Create the Q-Q plot using stats.probplot
+plt.figure(figsize=(8, 6))
+res = stats.probplot(rainfall_data_flattened, dist=stats.gamma, sparams=(shape_value, 0, scale_value), plot=plt)
+plt.title('Q-Q Plot')
 plt.show()
-
-
 
 
 
