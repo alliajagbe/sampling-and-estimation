@@ -201,3 +201,28 @@ sns.histplot(sample2, bins=50)
 plt.title('Histogram of Sample')
 plt.xlabel('Rainfall')
 plt.show()
+
+# finding the mom estimators of the sample
+shapes = []
+scales = []
+for i in range(1000):
+    sample2 = stats.gamma.rvs(shape[0], loc, scale[0], size=226)
+    mean_sample = np.mean(sample2)
+    var_sample = np.var(sample2)
+    shape_sample = mean_sample**2/var_sample
+    scale_sample = var_sample/mean_sample
+    shapes.append(shape_sample)
+    scales.append(scale_sample)
+
+# plotting the histogram of the mom estimators of the sample
+sns.histplot(shapes, bins=50, color='red')
+plt.title('Histogram of Shape')
+plt.xlabel('Shape')
+plt.show()
+
+sns.histplot(scales, bins=50, color='green')
+plt.title('Histogram of Scale')
+plt.xlabel('Scale')
+plt.show()
+
+# %%
