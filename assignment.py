@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats
+import pandas as pd
 #%%
 '''
 Question 1 - Part 1
@@ -105,6 +106,14 @@ plt.show()
 
 
 
+
+
+# %%
+'''
+# Question 2
+'''
+rainfall_data = pd.read_excel('Rainfall DataSet - Assignment 2.xlsx')
+rainfall_data.head()
 
 
 # %%
