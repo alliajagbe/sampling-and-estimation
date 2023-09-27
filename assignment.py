@@ -150,12 +150,13 @@ print("Shape:",shape[0])
 print("Scale:",scale[0])
 
 # estimating the parameters using the method of maximum likelihood
-def log_likelihood(alpha, beta, data):
+def log_likelihood(parameters, data):
+    alpha, beta = parameters
     output = -np.sum(np.log(beta**alpha * data**(alpha-1) * np.exp(-data*beta) / gamma(alpha)))
     return output
 
 initial_guess = [1,1] 
-res = minimize(log_likelihood, initial_guess, args=(rainfall_data), method='BFGS')
+res = minimize(log_likelihood, initial_guess, args=(rainfall_data,), method='BFGS')
 alpha, beta = res.x
 print("Shape:",alpha)
 print("Scale:",beta)
