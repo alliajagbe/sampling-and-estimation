@@ -20,18 +20,18 @@ rainfall_data = pd.read_excel('Rainfall DataSet - Assignment 2.xlsx', header=Non
 rainfall_data_flattened = np.array(rainfall_data).flatten()
 
 # plotting the histogram of the rainfall data
-sns.histplot(rainfall_data_flattened, bins=50)
+plt.hist(rainfall_data_flattened, bins=30)
 plt.title('Histogram of Rainfall Data')
 plt.xlabel('Rainfall')
 plt.show()
 
 # fitting a gamma distribution to the rainfall data
-shape, loc, scale = stats.gamma.fit(rainfall_data_flattened)
+shape, loc, scale = stats.gamma.fit(rainfall_data_flattened, floc=0)
 
 # plotting the fitted gamma distribution
-x = np.linspace(0, 3, 1000)
+x = np.linspace(0, np.max(rainfall_data_flattened), 180)
 y = stats.gamma.pdf(x, shape, loc, scale)
-sns.histplot(rainfall_data_flattened, bins=30, stat='density')
+plt.hist(rainfall_data_flattened, bins=30, density=True, alpha=0.5)
 plt.plot(x, y, label='Fitted Gamma Distribution')
 plt.title('Histogram of Rainfall Data')
 plt.xlabel('Rainfall')
