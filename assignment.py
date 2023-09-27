@@ -166,7 +166,14 @@ rainfall_data_flattened = rainfall_data.flatten()
 # Create the Q-Q plot using stats.probplot
 plt.figure(figsize=(8, 6))
 res = stats.probplot(rainfall_data_flattened, dist=stats.gamma, sparams=(shape_value, 0, scale_value), plot=plt)
-plt.title('Q-Q Plot')
+plt.title('Q-Q Plot with MOM')
+plt.show()
+
+#%%
+shape_value, scale_value = alpha, beta
+plt.figure(figsize=(8, 6))
+res = stats.probplot(rainfall_data_flattened, dist=stats.gamma, sparams=(shape_value, 0, scale_value), plot=plt)
+plt.title('Q-Q Plot with MLE')
 plt.show()
 
 
